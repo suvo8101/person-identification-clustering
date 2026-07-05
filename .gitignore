@@ -1,0 +1,21 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/tests/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Runtime data (uploaded photos, generated crops, results) -- never commit
+data/uploads/*
+data/results/*
+!data/uploads/.gitkeep
+!data/results/.gitkeep
+
+# Sample data output
+sample_data/generated/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

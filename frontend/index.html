@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Sheet — Person Identification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__mark">
+    <span class="sprocket-row" aria-hidden="true"></span>
+  </div>
+  <div class="masthead__title">
+    <h1>CONTACT SHEET</h1>
+    <p class="masthead__sub">Automated identity grouping from unsorted photographs</p>
+  </div>
+  <div class="masthead__roll" id="rollCounter">ROLL 000 · 0 FRAMES</div>
+</header>
+
+<main>
+  <section class="loader" id="loaderPanel">
+    <div class="loader__inner">
+      <p class="eyebrow">01 — LOAD FILM</p>
+      <h2>Drop in the photo set</h2>
+      <p class="hint">JPG / PNG. Mixed lighting, angles and expressions are expected — that's the point.</p>
+
+      <label class="dropzone" id="dropzone" for="fileInput">
+        <div class="dropzone__stamp">＋</div>
+        <div class="dropzone__text">
+          <strong>Click to select</strong> or drag images here
+        </div>
+      </label>
+      <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.bmp,.webp" hidden />
+
+      <div id="stagedList" class="staged-list"></div>
+
+      <div class="controls">
+        <label class="slider-field">
+          <span>Match strictness</span>
+          <input type="range" id="epsSlider" min="0.30" max="0.60" step="0.01" value="0.45" />
+          <span id="epsValue" class="mono">0.45</span>
+        </label>
+        <button id="developBtn" class="btn btn--primary" disabled>Develop &amp; Cluster</button>
+      </div>
+      <p id="statusLine" class="status-line" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="results" id="resultsPanel" hidden>
+    <div class="results__bar">
+      <p class="eyebrow">02 — CONTACT SHEET</p>
+      <h2 id="resultsHeading">Identities found</h2>
+      <button id="resetBtn" class="btn btn--ghost">Start a new roll</button>
+    </div>
+    <p id="resultsSummary" class="results__summary mono"></p>
+    <div id="clusterGrid" class="cluster-grid"></div>
+
+    <div id="unmatchedPanel" class="unmatched" hidden>
+      <p class="eyebrow">NO FACE DETECTED</p>
+      <div id="unmatchedList" class="unmatched__list"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="filmstrip-footer" aria-hidden="true">
+  <span class="sprocket-row"></span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
